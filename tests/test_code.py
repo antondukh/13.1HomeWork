@@ -8,16 +8,10 @@ def class_category():
     return Category('фрукты', 'фрукт', 'банан')
 
 
-def test_category(class_category):
-    assert class_category.total_categories == int
-    assert class_category.total_products == int
-
-
 def test_init_category(class_category):
     assert class_category.name == 'фрукты'
     assert class_category.description == 'фрукт'
     assert class_category.goods == 'банан'
-
 
 
 @pytest.fixture
@@ -32,3 +26,14 @@ def test_init_product(class_product):
     assert class_product.quantity == 45
 
 
+class TestCategory():
+    total_categories = 5
+    total_products = 5
+
+
+cat_1 = TestCategory
+
+
+def test_category():
+    assert cat_1.total_categories == 5
+    assert cat_1.total_products == 5
