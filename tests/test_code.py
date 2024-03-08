@@ -3,6 +3,13 @@ from class_category import Category
 from class_product import Product
 
 
+def test_category():
+    a = Category('фрукты', 'фрукт', ['банан'])
+    assert a.total_categories == 1
+    b = Category('овощи', 'овощ', ['капуста'])
+    assert b.total_categories == 2
+
+
 @pytest.fixture
 def class_category():
     return Category('фрукты', 'фрукт', 'банан')
@@ -26,14 +33,6 @@ def test_init_product(class_product):
     assert class_product.quantity == 45
 
 
-class TestCategory():
-    total_categories = 5
-    total_products = 5
-
-
-cat_1 = TestCategory
-
-
-def test_category():
-    assert cat_1.total_categories == 5
-    assert cat_1.total_products == 5
+def test_product():
+    a = Category('фрукты', 'фрукт', ['банан', 'киви', 'слива'])
+    assert a.total_products == 3
