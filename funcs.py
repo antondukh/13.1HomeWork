@@ -8,4 +8,3 @@ def open_js():
         return json_file
 
 
-print(open_js())
