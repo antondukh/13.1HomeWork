@@ -1,8 +1,8 @@
-#from class_category import Category
 from funcs import open_js
 
 
 class Product():
+    """Класс Продукты."""
     name = str
     description = str
     price = float
@@ -11,25 +11,39 @@ class Product():
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
     @classmethod
-    def new_prod(cls, x):
-        name, description, price, quantity = pass
-        return cls(name, description, price, quantity)
+    def new_prod(cls, **kwargs):
+        """Метод создания объекта."""
+        return cls(**kwargs)
 
     @property
-    def prod_price(self):
-        if self.price <= 0:
+    def price(self):
+        """Вывод цены."""
+        return self.__price
+
+    @price.setter
+    def price(self, new_price):
+        """Изменение цены."""
+        if new_price <= 0:
             print("цена введена некорректная")
+        else:
+            self.__price = new_price
 
 
-new_prod_smart1 = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-new_prod_smart2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-new_prod_smart3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
-
-new_prod_tv = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
+smart = open_js()[0]["products"]
+tv_ = open_js()[1]["products"]
 
 
+new_prod_smart1 = Product(smart[0]['name'], smart[0]['description'], smart[0]['price'], smart[0]['quantity'])
+new_prod_smart2 = Product(smart[1]['name'], smart[1]['description'], smart[1]['price'], smart[1]['quantity'])
+new_prod_smart3 = Product(smart[2]['name'], smart[2]['description'], smart[2]['price'], smart[2]['quantity'])
 
+new_p = Product.new_prod(**smart[1])
+
+print(new_p.price)

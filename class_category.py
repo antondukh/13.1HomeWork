@@ -3,6 +3,7 @@ from class_product import *
 
 
 class Category():
+    """Класс Категория товаров"""
     name = str
     description = str
     goods = list
@@ -14,24 +15,30 @@ class Category():
         self.name = name
         self.description = description
         self.__goods = goods
-        self.prod_list = []
         Category.total_categories += 1
         Category.total_products = len(self.__goods)
 
-    def add_product(self, x):
-        self.prod_list.append(x)
-        return self.prod_list
+    def add_product(self, prod):
+        """Добавление объекта товара в список."""
+        self.__goods.append(prod)
 
     @property
-    def good_list(self):
-        for item in self.__goods:
-            print(f"{item['name']}, {item['price']} руб. Остаток: {item['quantity']}")
+    def goods(self):
+        """Вывод списка товаров."""
+        for good in self.__goods:
+            print(f"{good.name}, {good.price} руб. Остаток: {good.quantity}")
 
 
+smartphone = Category(open_js()[0]['name'], open_js()[0]['description'], [])
+tv = Category(open_js()[1]['name'], open_js()[1]['description'], [])
 
-smartphone = Category(open_js()[0]['name'], open_js()[0]['description'], open_js()[0]['products'])
-tv = Category(open_js()[1]['name'], open_js()[1]['description'], open_js()[1]['products'])
+smartphone.add_product(new_prod_smart1)
+smartphone.add_product(new_prod_smart2)
+smartphone.add_product(new_prod_smart3)
+smartphone.add_product(new_p)
 
-print(smartphone.good_list)
+
+print(smartphone.goods)
+
 
 
