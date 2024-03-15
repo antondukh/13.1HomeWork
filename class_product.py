@@ -35,6 +35,9 @@ class Product():
         else:
             self.__price = new_price
 
+    def __add__(self, other):
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
+
 
 smart = open_js()[0]["products"]
 tv_ = open_js()[1]["products"]
@@ -46,4 +49,5 @@ new_prod_smart3 = Product(smart[2]['name'], smart[2]['description'], smart[2]['p
 
 new_p = Product.new_prod(**smart[1])
 
-print(new_p)
+print(new_prod_smart1)
+print(new_prod_smart1 + new_prod_smart2)
