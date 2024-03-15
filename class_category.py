@@ -28,6 +28,9 @@ class Category():
         for good in self.__goods:
             print(f"{good.name}, {good.price} руб. Остаток: {good.quantity}")
 
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {len(self.__goods)}"
+
 
 smartphone = Category(open_js()[0]['name'], open_js()[0]['description'], [])
 tv = Category(open_js()[1]['name'], open_js()[1]['description'], [])
@@ -39,6 +42,5 @@ smartphone.add_product(new_p)
 
 
 print(smartphone.goods)
-
-
+print(smartphone)
 

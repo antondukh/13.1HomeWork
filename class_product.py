@@ -46,4 +46,4 @@ new_prod_smart3 = Product(smart[2]['name'], smart[2]['description'], smart[2]['p
 
 new_p = Product.new_prod(**smart[1])
 
-print(new_p.price)
+print(new_p)
