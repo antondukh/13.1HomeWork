@@ -29,7 +29,10 @@ class Category():
             print(f"{good.name}, {good.price} руб. Остаток: {good.quantity}")
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {len(self.__goods)}"
+        quantity_all = 0
+        for i in self.__goods:
+            quantity_all += i.quantity
+        return f"{self.name}, количество продуктов: {quantity_all}"
 
 
 smartphone = Category(open_js()[0]['name'], open_js()[0]['description'], [])
@@ -40,7 +43,5 @@ smartphone.add_product(new_prod_smart2)
 smartphone.add_product(new_prod_smart3)
 smartphone.add_product(new_p)
 
-
-print(smartphone.goods)
 print(smartphone)
 
