@@ -8,11 +8,12 @@ class Product():
     price = float
     quantity = int
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity, color=None):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        self.color = color
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
@@ -36,6 +37,8 @@ class Product():
             self.__price = new_price
 
     def __add__(self, other):
+        if type(self) != type(other):
+            raise ValueError('Складывать можно только объекты одного класса')
         return (self.__price * self.quantity) + (other.__price * other.quantity)
 
 
@@ -48,6 +51,3 @@ new_prod_smart2 = Product(smart[1]['name'], smart[1]['description'], smart[1]['p
 new_prod_smart3 = Product(smart[2]['name'], smart[2]['description'], smart[2]['price'], smart[2]['quantity'])
 
 new_p = Product.new_prod(**smart[1])
-
-print(new_prod_smart1)
-print(new_prod_smart1 + new_prod_smart2)

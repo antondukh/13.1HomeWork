@@ -20,7 +20,10 @@ class Category():
 
     def add_product(self, prod):
         """Добавление объекта товара в список."""
+        if not isinstance(prod, Product):
+            raise ValueError('Складывать можно только объекты одного класса')
         self.__goods.append(prod)
+
 
     @property
     def goods(self):
@@ -45,6 +48,3 @@ smartphone.add_product(new_prod_smart1)
 smartphone.add_product(new_prod_smart2)
 smartphone.add_product(new_prod_smart3)
 smartphone.add_product(new_p)
-
-print(smartphone)
-
