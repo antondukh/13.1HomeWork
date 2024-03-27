@@ -6,5 +6,3 @@ def open_js():
         products = file.read()
         json_file = json.loads(products)
         return json_file
-
-

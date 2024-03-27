@@ -1,8 +1,7 @@
-from funcs import open_js
-from class_product import *
+from class_product import Product
 
 
-class Category():
+class Category:
     """Класс Категория товаров"""
     name = str
     description = str
@@ -39,12 +38,3 @@ class Category():
 
     def __str__(self):
         return f"{self.name}, количество продуктов: {len(self)}"
-
-
-smartphone = Category(open_js()[0]['name'], open_js()[0]['description'], [])
-tv = Category(open_js()[1]['name'], open_js()[1]['description'], [])
-
-smartphone.add_product(new_prod_smart1)
-smartphone.add_product(new_prod_smart2)
-smartphone.add_product(new_prod_smart3)
-smartphone.add_product(new_p)

@@ -1,7 +1,18 @@
-from funcs import open_js
+from abc import ABC, abstractmethod
 
 
-class Product():
+class ProductABC(ABC):
+    @abstractmethod
+    def __str__(self):
+        pass
+
+
+class MixinProduct:
+    def __repr__(self):
+        pass
+
+
+class Product(ProductABC):
     """Класс Продукты."""
     name = str
     description = str
@@ -40,14 +51,3 @@ class Product():
         if type(self) != type(other):
             raise ValueError('Складывать можно только объекты одного класса')
         return (self.__price * self.quantity) + (other.__price * other.quantity)
-
-
-smart = open_js()[0]["products"]
-tv_ = open_js()[1]["products"]
-
-
-new_prod_smart1 = Product(smart[0]['name'], smart[0]['description'], smart[0]['price'], smart[0]['quantity'])
-new_prod_smart2 = Product(smart[1]['name'], smart[1]['description'], smart[1]['price'], smart[1]['quantity'])
-new_prod_smart3 = Product(smart[2]['name'], smart[2]['description'], smart[2]['price'], smart[2]['quantity'])
-
-new_p = Product.new_prod(**smart[1])
