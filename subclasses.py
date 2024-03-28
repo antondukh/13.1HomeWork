@@ -9,6 +9,12 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __repr__(self):
+        return f"{self.__class__.__name__},({self.__dict__.items()})"
+
 
 class LawnGrass(Product):
     def __init__(self, name, description, price, quantity, color, country, germination):
@@ -16,3 +22,8 @@ class LawnGrass(Product):
         self.country = country
         self.germination = germination
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __repr__(self):
+        return f"{self.__class__.__name__},({self.__dict__.items()})"

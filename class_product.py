@@ -3,16 +3,19 @@ from abc import ABC, abstractmethod
 
 class ProductABC(ABC):
     @abstractmethod
-    def __str__(self):
-        pass
-
-
-class MixinProduct:
     def __repr__(self):
         pass
 
 
-class Product(ProductABC):
+class MixinProduct:
+    def __init__(self, *args, **kwargs):
+        print(repr(self))
+
+    def __repr__(self):
+        return f"{self.__class__.__name__},({self.__dict__.items()})"
+
+
+class Product(ProductABC, MixinProduct):
     """Класс Продукты."""
     name = str
     description = str
@@ -25,6 +28,9 @@ class Product(ProductABC):
         self.__price = price
         self.quantity = quantity
         self.color = color
+
+    def __repr__(self):
+        return f"{self.__class__.__name__},({self.__dict__.items()})"
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
